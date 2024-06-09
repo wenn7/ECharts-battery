@@ -1,0 +1,270 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>铅酸蓄电池充放电测试数据</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<link rel="stylesheet" href="css/comon0.css">
+</head>
+
+<body>
+	<div class="loading">
+		<div class="loadbox"> <img src="images/loading.gif"> 页面加载中... </div>
+	  </div>
+	<div class="head">
+		<h1><a href="https://gitee.com/iGaoWei/big-data-view" style="color: white">铅酸蓄电池充放电测试数据</a></h1>
+		<div class="time" id="showTime"><a href="https://gitee.com/iGaoWei/big-data-view/tree/master/web">2021年12月05日16时16分54秒</a></div>
+		<script>
+			var t = null;
+			t = setTimeout(time, 1000);//開始运行
+			function time() {
+				clearTimeout(t);//清除定时器
+				dt = new Date();
+				var y = dt.getFullYear();
+				var mt = dt.getMonth() + 1;
+				var day = dt.getDate();
+				var h = dt.getHours();//获取时
+				var m = dt.getMinutes();//获取分
+				var s = dt.getSeconds();//获取秒
+				var t = null;
+				document.getElementById("showTime").innerHTML = y + "年" + Appendzero(mt) + "月" + Appendzero(day) + "日" + Appendzero(h) + "时" + Appendzero(m) + "分" + Appendzero(s) + "秒";
+				function Appendzero(obj) {
+					if (obj < 10) return "0" + "" + obj;
+					else return obj;
+				}
+				t = setTimeout(time, 1000); //设定定时器，循环运行     
+			}
+		</script>
+	</div>
+	<div class="mainbox">
+		<ul class="clearfix">
+			<li>
+				<div class="boxall" style="height: calc(15% - .15rem)">
+					<ul class="row h100 row1">
+						<li class="col-4">
+							<div class="bar1"><img src="images/icon1.png">
+								<h3 ><span style="font-size: 13px;">电池1</span>15.74</h3>
+							</div>
+						</li>
+						<li class="col-4">
+							<div class="bar1"><img src="images/icon4.png">
+								<h3><span style="font-size: 13px;">电池2</span>15.56</h3>
+							</div>
+						</li>
+						<li class="col-4">
+							<div class="bar1"><img src="images/icon5.png">
+								<h3><span style="font-size: 13px;">电池3</span>15.42</h3>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="boxall" style="height: calc(43% - .15rem)">
+				
+					<ul class="sec h100">
+<li>
+	<div>
+		<p><img src="images/icon4.png">最大电压</p>
+		<div class="barnav"><div class="bar2"><span style="width:76.18%;"></span></div> <span>76.18</span></div>
+
+		
+	</div>
+
+	<div>
+<div class="zaf">
+	<p>平均</p>
+	<p><span>64.40<i></i></span></p>
+</div>
+	</div>
+</li>
+
+<li>
+	<div>
+		<p><img src="images/icon5.png">最高温度</p>
+		
+		<div class="barnav"><div class="bar2"><span style="width:26.5%;"></span></div> <span>26.50</span></div>
+	</div>
+
+	<div>
+<div class="zaf">
+	<p>平均</p>
+	<p><span>19.51<i></i></span></p>
+</div>
+	</div>
+</li>
+
+<li>	
+	<div>
+		<p><img src="images/icon6.png">最大电流</p>
+		<div class="barnav"><div class="bar2"><span style="width:8.6%;"></span></div> <span>8.60</span></div>
+	</div>
+	
+	<div>
+<div class="zaf">
+	<p>平均</p>
+	<p><span>6.55<i></i></span></p>
+</div>
+	</div>
+</li>
+
+					</ul>
+				
+				</div>
+				<div class="boxall" style="height: calc(42% - .15rem)">
+					<div class="alltitle">容量衰减曲线</div>
+					<div class="boxnav" id="echarts3"></div>
+				</div>
+			</li>
+			<li>
+				<div class="boxall" style="height: calc(20% - .15rem)">
+					<ul class="row h100 clearfix">
+						<li class="col-6">
+							<div class="sqzs h100">
+								<p style="font-size: 22px;">总运行时间</p>
+								<h1 style="font-size: 26px;">26天7小时54分11秒</h1>
+							</div>
+						</li>
+						<li class="col-6">
+							<ul class="row h100 clearfix">
+								<li class="col-4">
+									<div class="tit01" style="font-size: 13px;">总循环次数</div>
+									<div class="piebox" id="pe01"></div>
+								</li>
+								<li class="col-4">
+									<div class="tit01" style="font-size: 13px;">最大充电容量</div>
+									<div class="piebox" id="pe02"></div>
+								</li>
+								<li class="col-4">
+									<div class="tit01" style="font-size: 13px;">最大放电容量</div>
+									<div class="piebox" id="pe03"></div>
+								</li>
+							</ul>
+
+						</li>
+					</ul>
+				</div>
+				<div class="boxall" style="height: calc(38% - .15rem)">
+					<div class="boxnav h100" id="echarts1"></div>
+				</div>
+				<div class="boxall" style="height: calc(42% - .15rem)">
+					<div class="alltitle">dQ/dV曲线 </div>
+					<div class="boxnav" id="echarts2"></div>
+				</div>
+
+			</li>
+			<li>
+
+				<div class="boxall" style="height: calc(15% - .15rem)">
+
+					<ul class="row h100 row1">
+						<li class="col-4">
+							<div class="bar1 bar2"><img src="images/icon7.png">
+								<h3><span style="font-size: 13px;">电池4
+									</span>15.15</h3>
+							</div>
+						</li>
+						<li class="col-4">
+							<div class="bar1 bar2"><img src="images/icon8.png">
+								<h3><span style="font-size: 13px;">电池5
+									</span>14.89</h3>
+							</div>
+						</li>
+						<li class="col-4">
+							<div class="bar1 bar2"><img src="images/icon9.png">
+								<h3><span style="font-size: 13px;">电池6
+									</span>0.23</h3>
+							</div>
+						</li>
+					</ul>
+
+
+				</div>
+				<div class="boxall" style="height: calc(43% - .15rem)">
+					<div class="alltitle">各参数与容量的相关性</div>
+					<div class=" boxnav" id="lastecharts">
+					</div>
+
+				</div>
+				<div class="boxall" style="height: calc(45% - .45rem)">
+					<div class="alltitle">各串联电压对容量的影响程度</div>
+					<div class=" boxnav paim">
+						<ul class="h99.999">
+							<li>
+								<span style="background-color: #ed405d;">1</span>
+								<div class="pmnav ">
+									<p>电池1</p>
+									<div class="pmbar"><span style="width:95%"></span><i>95%</i></div>
+								</div>
+							</li>
+							<li >
+								<span style="background-color: #f78c44;">2</span>
+								<div class="pmnav">
+									<p>电池3</p>
+									<div class="pmbar"><span style="width:94%"></span><i>94%</i></div>
+								</div>
+							</li>
+							<li>
+								<span 	style="background-color: #f8cf54;">3</span>
+								<div class="pmnav">
+									<p>电池2</p>
+									<div class="pmbar"><span style="width:93%"></span><i>93%</i></div>
+								</div>
+							</li>
+							<li>
+								<span style="background-color: #49bcf7;">4</span>
+								<div class="pmnav">
+									<p>电池4</p>
+									<div class="pmbar"><span style="width:91%"></span><i>91%</i></div>
+								</div>
+							</li>
+							<li>
+								<span style="background-color: #cc99ff;">5</span>
+								<div class="pmnav">
+									<p>电池5</p>
+									<div class="pmbar"><span style="width:74%"></span><i>74%</i></div>
+								</div>
+							</li>
+							<li >
+								<span style="background-color: #878787;">6</span>
+								<div class="pmnav">
+									<p>电池6</p>
+									<div class="pmbar"><span style="width:68%"></span><i>68%</i></div>
+								</div>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+			
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			var arr = [];
+			var max;
+			$(".paim li i").each(function () {
+				arr.push($(this).text());
+			})
+			//alert(arr)
+			max = Math.max.apply(null, arr);
+
+			$(".paim .pmbar span").each(function () {
+				var i = $(this).parents("li").index()
+				w = arr[i] / max * 100;
+				sw = w.toFixed(0) + '%'
+
+				$(this).css({ width: sw })
+			})
+
+		})
+	</script>
+
+
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+	<script language="JavaScript" src="js/js.js"></script>
+
+</body>
+</html>
